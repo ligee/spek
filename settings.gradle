@@ -4,6 +4,7 @@ pluginManagement {
     repositories {
         jcenter()
         gradlePluginPortal()
+        mavenLocal()
     }
 }
 
@@ -16,6 +17,8 @@ include 'spek-runtime:common'
 include 'spek-runtime:jvm'
 
 include 'spek-runner:junit5'
+
+include 'spek-script:jvm'
 
 include 'spek-ide-plugin:interop-jvm'
 
@@ -32,5 +35,7 @@ if (hasProperty("localAndroidStudio")) {
 
 include 'integration-test:common'
 include 'integration-test:jvm'
+
+include 'integration-test-script:jvm'
 
 include 'distribution'

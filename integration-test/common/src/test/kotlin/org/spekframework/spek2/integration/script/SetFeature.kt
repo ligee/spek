@@ -1,4 +1,4 @@
-package org.spekframework.spek2.integration
+package org.spekframework.spek2.integration.script
 
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature

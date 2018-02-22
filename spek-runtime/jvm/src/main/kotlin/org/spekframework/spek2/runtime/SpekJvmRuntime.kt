@@ -12,6 +12,7 @@ import org.spekframework.spek2.runtime.scope.isRelated
 import kotlin.reflect.KClass
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.primaryConstructor
+import kotlin.reflect.full.superclasses
 import kotlin.streams.toList
 
 actual class SpekRuntime : AbstractRuntime() {
@@ -46,7 +47,8 @@ actual class SpekRuntime : AbstractRuntime() {
     }
 
     private fun instanceFactoryFor(spek: KClass<*>): InstanceFactory {
-        return spek.annotations.filterIsInstance<CreateWith>()
+        return (spek.annotations + spek.superclasses.filterNot { it.java.isInterface }.flatMap { it.annotations })
+            .filterIsInstance<CreateWith>()
             .map { it.factory }
             .map { it.objectInstance ?: it.primaryConstructor!!.call() }
             .firstOrNull() ?: defaultInstanceFactory

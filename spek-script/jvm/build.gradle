@@ -1,0 +1,20 @@
+apply from: "$rootDir/gradle/common/dependencies.gradle"
+apply from: "$rootDir/gradle/common/kotlin-jvm.gradle"
+
+dependencies {
+    compile project(':spek-dsl:jvm')
+    implementation 'org.jetbrains.kotlin:kotlin-reflect'
+    implementation 'org.jetbrains.kotlin:kotlin-scripting-common'
+    implementation 'org.jetbrains.kotlin:kotlin-scripting-jvm'
+    implementation 'org.jetbrains.kotlin:kotlin-scripting-misc'
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
+compileTestKotlin {
+    kotlinOptions.freeCompilerArgs = ["-script-templates", "org.spekframework.spek2.script.SpekScript"]
+}

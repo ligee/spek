@@ -1,4 +1,4 @@
-package org.spekframework.spek2.integration
+package org.spekframework.spek2.integration.script
 
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.Suite
@@ -10,14 +10,14 @@ open class Calculator {
     fun add(x: Int, y: Int) = x + y
 }
 
-class AdvancedCalculator: Calculator() {
+class AdvancedCalculator: org.spekframework.spek2.integration.script.Calculator() {
     fun pow(x: Int, y: Int) = x.toDouble().pow(y).toInt()
 }
 
 
 object CalculatorSpecs: Spek({
     fun Suite.behavesLikeACalculator() {
-        val calculator by memoized<Calculator>()
+        val calculator by memoized<org.spekframework.spek2.integration.script.Calculator>()
 
         it("1 + 2 = 3") {
             assertEquals(3, calculator.add(1, 2))
@@ -25,13 +25,13 @@ object CalculatorSpecs: Spek({
     }
 
     describe("Calculator") {
-        val calculator by memoized { Calculator() }
+        val calculator by memoized { org.spekframework.spek2.integration.script.Calculator() }
 
         behavesLikeACalculator()
     }
 
     describe("AdvancedCalculator") {
-        val calculator by memoized { AdvancedCalculator() }
+        val calculator by memoized { org.spekframework.spek2.integration.script.AdvancedCalculator() }
 
         behavesLikeACalculator()
 
