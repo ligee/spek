@@ -1,7 +1,7 @@
 buildscript {
     repositories {
         jcenter()
-        mavenLocal()
+//        mavenLocal()
     }
 
     dependencies {
@@ -37,7 +37,7 @@ allprojects {
     // group = 'org.spekframework.spek2'
     repositories {
         jcenter()
-        mavenLocal()
+//        mavenLocal()
     }
 
     apply plugin: 'idea'
