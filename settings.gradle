@@ -2,9 +2,11 @@
 // Must put jcenter() first to resolve the correct artifacts for Dokka
 pluginManagement {
     repositories {
+        maven {
+            url "https://dl.bintray.com/kotlin/kotlin-eap"
+        }
         jcenter()
         gradlePluginPortal()
-//        mavenLocal()
     }
 }
 
