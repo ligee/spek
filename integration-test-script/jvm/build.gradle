@@ -11,9 +11,13 @@ test {
     }
 }
 
+sourceSets.test.kotlin.filter.include("**/*.spek")
+
 dependencies {
+    testCompile project(':spek-script:jvm')
+    // alternative to explicit inclusion of the spec files, but doesn't work with the dynamic jar versions with timestamps
+//    testKotlinScriptDef project(':spek-script:jvm')
     testImplementation project(':spek-dsl:jvm')
-    testImplementation project(':spek-script:jvm')
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
     testRuntimeOnly project(':spek-runner:junit5')
